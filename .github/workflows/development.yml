@@ -1,0 +1,20 @@
+name: Development workflow
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Development Code
+        uses: actions/checkout@v2
+      - name: Use Node.js 16.9
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.9
+      - run: yarn
+      - run: yarn build --if-present
